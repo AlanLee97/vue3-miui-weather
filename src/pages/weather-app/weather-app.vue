@@ -5,7 +5,7 @@ import {
   TemperatureTextBox,
   RecentWeatherInfo,
 } 
-from '..';
+from '../../components';
 </script>
 
 <template>
