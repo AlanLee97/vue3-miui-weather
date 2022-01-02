@@ -13,8 +13,8 @@ const props= defineProps<{
   directionRow?: boolean
   directionColumn?: boolean
   direction?: 'row' | 'column' | 'row-reverse' | 'column-reverse'
-  itemAlignStart: boolean
-  itemAlignEnd: boolean
+  itemAlignStart?: boolean
+  itemAlignEnd?: boolean
   flexNum?: number
  }>()
 
