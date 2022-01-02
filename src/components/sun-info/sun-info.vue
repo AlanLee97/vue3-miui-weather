@@ -1,14 +1,34 @@
 <script lang="ts" setup>
+import { SunData } from "../summary-weather-info/summary-weather-info.vue";
+
+const props = defineProps<{
+  data: SunData;
+}>();
+
+const {icon, desc, time} = props.data;
 </script>
 
 <template>
-  <div class="sun-info">
-    日落日出信息
-  </div>
+  <flex-box class="sun-info" center-v>
+    <img :src="icon" alt="" class="icon">
+    <div class="desc">{{desc}}</div>
+    <div class="time">{{time}}</div>
+  </flex-box>
 </template>
 
 <style lang="scss" scoped>
 .sun-info {
+  font-size: 12px;
+  .icon {
+    width: 14px;
+    height: 14px;
+  }
+  .desc {
+    margin: 0 6px;
+  }
 
+  .time {
+    margin-right: 6px;
+  }
 }
 </style>

@@ -4,6 +4,11 @@ import {
   DisplayTemperature,
   TemperatureTextBox,
   RecentWeatherInfo,
+  HoursWeatherInfo,
+  SummaryWeatherInfo,
+  Forecast,
+  TipBox,
+  Footer
 } 
 from '../../components';
 </script>
@@ -14,6 +19,11 @@ from '../../components';
       <TemperatureTextBox />
       <RecentWeatherInfo />
       <flex-box class="btn" center-h-v>查看近15日天气</flex-box>
+      <HoursWeatherInfo />
+      <SummaryWeatherInfo />
+      <Forecast />
+      <TipBox />
+      <Footer />
       
     </div>
 </template>
@@ -28,6 +38,7 @@ from '../../components';
   position: fixed;
   top: 0;
   left: 0;
+  overflow: scroll;
 }
 .btn {
   background-color: rgba($color: #fff, $alpha: .3);
