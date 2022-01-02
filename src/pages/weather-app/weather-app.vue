@@ -14,6 +14,7 @@ from '../../components';
       <TemperatureTextBox />
       <RecentWeatherInfo />
       <flex-box class="btn" center-h-v>查看近15日天气</flex-box>
+      
     </div>
 </template>
 
