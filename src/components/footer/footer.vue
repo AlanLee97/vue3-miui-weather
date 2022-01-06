@@ -3,7 +3,7 @@
 
 <template>
   <flex-box class="footer" center-h-v>
-    部分数据数据来自 <img src="../../assets/caiyun.png" class="icon" />彩云天气
+    部分气象数据来自 <img src="../../assets/caiyun.png" class="icon" />彩云天气
   </flex-box>
 </template>
 
