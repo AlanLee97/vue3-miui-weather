@@ -10,7 +10,7 @@ const {icon, desc, time} = props.data;
 
 <template>
   <flex-box class="sun-info" center-v>
-    <img :src="icon" alt="" class="icon">
+    <img src="../../assets/icon_cloudy.webp" alt="" class="icon">
     <div class="desc">{{desc}}</div>
     <div class="time">{{time}}</div>
   </flex-box>

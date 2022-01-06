@@ -12,7 +12,7 @@ const {time, temperature, icon, windyPower, airQuality} = props.data;
     <flex-box direction-column class="item" center-h-v>
       <div class="time">{{time}}</div>
       <div class="temperature">{{temperature}}</div>
-      <img :src="icon" alt="" class="icon">
+      <img src="../../assets/icon_cloudy.webp" alt="" class="icon">
       <div class="windy-power">{{windyPower}}</div>
       <div class="air-quality"><span class="text">{{airQuality}}</span></div>
     </flex-box>
