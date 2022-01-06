@@ -15,6 +15,8 @@
   .icon {
     width: 16px;
     height: 16px;
+    opacity: 0.5;
+    margin-left: 10px;
   }
 }
 </style>
