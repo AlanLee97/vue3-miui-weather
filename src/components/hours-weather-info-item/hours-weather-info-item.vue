@@ -22,7 +22,7 @@ const {time, temperature, icon, windyPower, airQuality} = props.data;
 <style lang="scss" scoped>
 .hours-weather-info-item {
   .item {
-    width: 56px;
+    width: 60px;
     line-height: 3;
     overflow: hidden;
     padding: 20px 0;

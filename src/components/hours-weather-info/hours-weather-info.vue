@@ -31,12 +31,16 @@ for(let i = 0; i < 24; i++) {
 
 <style lang="scss" scoped>
 .hours-weather-info {
-  margin: 40px 20px;
+  margin: 40px 0 40px 20px;
   overflow: scroll;
   scrollbar-width: 0;
 
   .hours-weather-info-item:first-child {
     margin-left: -10px;
+  }
+
+  .hours-weather-info-item:last-child {
+    margin-right: 20px;
   }
 }
 </style>
