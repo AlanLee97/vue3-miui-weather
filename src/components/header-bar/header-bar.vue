@@ -25,7 +25,10 @@
 <style lang="scss" scoped>
 .header-bar {
   padding: 20px;
-  padding-top: 40px;
+  position: fixed;
+  top: 40px;
+  left: 0;
+  width: 100%;
 
   .icon {
     width: 28px;
