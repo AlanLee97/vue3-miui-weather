@@ -7,6 +7,7 @@ export {default as DisplayTemperature} from './display-temperature/display-tempe
 export {default as TemperatureTextBox} from './temperature-text-box/temperature-text-box.vue';
 export {default as RecentWeatherInfo} from './recent-weather-info/recent-weather-info.vue';
 export {default as RecentWeatherInfoItem} from './recent-weather-info-item/recent-weather-info-item.vue';
+export {default as RecentWeatherBtn} from './recent-weather-btn/recent-weather-btn.vue';
 export {default as HoursWeatherInfo} from './hours-weather-info/hours-weather-info.vue';
 export {default as HoursWeatherInfoItem} from './hours-weather-info-item/hours-weather-info-item.vue';
 export {default as SummaryWeatherInfo} from './summary-weather-info/summary-weather-info.vue';
