@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div class="temperature-text-box">
+  <flex-box class="temperature-text-box" center-h-v direction-column>
     <DisplayTemperature />
     <flex-box center-h-v>
       <span>晴</span>
@@ -11,14 +11,15 @@
         <img class="icon" src="../../assets/edit.png" alt="">
       </flex-box>
     </flex-box>
-  </div>
+  </flex-box>
 </template>
 
 <style lang="scss" scoped>
 .temperature-text-box {
   padding: 100px 0;
   font-size: 22px;
-  height: 52vh;
+  height: 65vh;
+  padding-top: 200px;
 
   .icon-wrapper {
     width: 22px;
