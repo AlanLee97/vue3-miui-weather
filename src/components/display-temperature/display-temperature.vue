@@ -23,8 +23,9 @@
 
   .temperature-unit {
     font-size: 24px;
-    margin-top: 13px;
+    margin-top: 16px;
     margin-left: 10px;
+    font-weight: 600;
     font-family: Helvetica;
     position: absolute;
   }
