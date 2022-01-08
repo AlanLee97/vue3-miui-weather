@@ -59,7 +59,7 @@ const summaryData = reactive<SummaryData[]>([
 
 <style lang="scss" scoped>
 .summary-weather-info {
-  padding: 0 20px;
+  padding: 20px;
 
   .sun-info-wrapper div{
     margin-bottom: 20px;

@@ -49,7 +49,7 @@ let tipBoxData2: Array<TipBoxItemData> = reactive([
 <style lang="scss" scoped>
 .tip-box {
   padding: 30px 20px;
-  margin: 20px;
+  margin: 0 20px;
   background-color: rgba($color: #FFF, $alpha: .3);
   border-radius: 20px;
 

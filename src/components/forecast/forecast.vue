@@ -12,6 +12,7 @@
 .forecast {
   border-radius: 20px;
   margin: 20px;
+  margin-bottom: 10px;
 
   .poster {
     width: 100%;
