@@ -31,7 +31,7 @@ for(let i = 0; i < 24; i++) {
 
 <style lang="scss" scoped>
 .hours-weather-info {
-  margin: 40px 0 30px 20px;
+  margin: 40px 0 30px 30px;
   overflow: scroll;
   scrollbar-width: 0;
 

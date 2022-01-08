@@ -11,10 +11,10 @@
   background-color: rgba($color: #fff, $alpha: .3);
   padding-top: 6px;
   padding-bottom: 6px;
-  margin: 0 20px;
+  margin: 0 auto;
   margin-top: 20px;
-  width: calc(100% - 40px);
-  height: 54px;
+  width: calc(100% - 60px);
+  height: 50px;
   border-radius: 38px;
 }
 </style>

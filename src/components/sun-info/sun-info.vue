@@ -19,17 +19,19 @@ const {icon, desc, time} = props.data;
 
 <style lang="scss" scoped>
 .sun-info {
-  font-size: 12px;
+  font-size: 16px;
   .icon {
     width: 14px;
     height: 14px;
   }
   .desc {
     margin: 0 6px;
+    transform: scale(0.6875);
   }
 
   .time {
     margin-right: 6px;
+    transform: scale(0.6875);
   }
 }
 </style>

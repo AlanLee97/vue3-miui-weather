@@ -64,6 +64,6 @@
 
 <style lang="scss" scoped>
 .recent-weather-info {
-
+  padding: 0 10px;
 }
 </style>
