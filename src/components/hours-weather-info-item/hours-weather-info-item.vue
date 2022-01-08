@@ -13,7 +13,10 @@ const {time, temperature, icon, windyPower, airQuality} = props.data;
       <div class="time">{{time}}</div>
       <div class="temperature">{{temperature}}</div>
       <img src="../../assets/icon_cloudy.webp" alt="" class="icon">
-      <div class="windy-power">{{windyPower}}</div>
+      <flex-box class="windy-power" center-v>
+        <img src="../../assets/wind_northeast.webp" alt="" class="icon-wind-power">
+        {{windyPower}}
+      </flex-box>
       <div class="air-quality"><span class="text">{{airQuality}}</span></div>
     </flex-box>
   </div>
@@ -36,6 +39,11 @@ const {time, temperature, icon, windyPower, airQuality} = props.data;
     }
     .windy-power {
       font-size: 12px;
+      .icon-wind-power {
+        width: 12px;
+        height: 12px;
+        margin-right: 4px;
+      }
     }
     .air-quality {
       background-color: rgba($color: #fff, $alpha: .3);
