@@ -16,15 +16,6 @@ from '../../components';
 
 <template>
     <div class="weather-app">
-      <!-- <div v-flex.space-between>
-        <div>1</div>
-        <div>2</div>
-      </div> -->
-      <flex-box wrap center-h space-between horizontal>
-        <div>1</div>
-        <div>2</div>
-      </flex-box>
-
       <HeaderBar />
       <TemperatureTextBox />
       <RecentWeatherInfo />
