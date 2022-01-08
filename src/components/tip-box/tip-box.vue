@@ -39,7 +39,7 @@ let tipBoxData2: Array<TipBoxItemData> = reactive([
     <template v-for="item in tipBoxData1" :key="item.text">
       <tip-box-item :data="item" class="item-wrapper" />
     </template>
-    <div style="width: 100%; height: 20px;"></div>
+    <div class="divide"></div>
     <template v-for="item in tipBoxData2" :key="item.text">
       <tip-box-item :data="item" class="item-wrapper" />
     </template>
@@ -48,13 +48,18 @@ let tipBoxData2: Array<TipBoxItemData> = reactive([
 
 <style lang="scss" scoped>
 .tip-box {
-  padding: 20px;
+  padding: 30px 20px;
   margin: 20px;
   background-color: rgba($color: #FFF, $alpha: .3);
   border-radius: 20px;
 
   .item-wrapper {
     width: 28%;
+  }
+
+  .divide {
+    width: 100%; 
+    height: 30px;
   }
 }
 </style>
