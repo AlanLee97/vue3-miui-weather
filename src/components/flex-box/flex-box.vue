@@ -25,18 +25,7 @@ interface FlexBoxProps {
 }
 
 const props= defineProps<FlexBoxProps>()
-
 const className = ref('flex-box');
-const style = ref('');
-
-const {
-  height,
-  width,
-  direction,
-  flexNum,
-} = props;
-
-
 const copyProps = JSON.parse(JSON.stringify(props));
 for (let key in copyProps) {
   if(copyProps[key]) {
@@ -57,7 +46,14 @@ for (let key in copyProps) {
   }
 }
 
+const {
+  height,
+  width,
+  direction,
+  flexNum,
+} = props;
 
+const style = ref('');
 style.value = `
 width: ${width ? width + 'px' : ''}; 
 height: ${height ? height + 'px' : ''}; 
