@@ -5,6 +5,7 @@
 </template>
 
 <script lang="ts">
+import { storeToRefs } from 'pinia';
 import {
   defineComponent,
   onMounted,
@@ -13,37 +14,39 @@ import {
   ref,
   watch,
 } from 'vue';
+import { useWeatherAppStore } from '../../store';
 
 export default defineComponent({
   name: 'WeatherBg',
-  props: {
-    appScrollTop: {
-      type: Number,
-      default: 0,
-    },
-  },
-  setup(props, { emit }) {
-    console.log('weatherBg props', props);
+  setup(props) {
+    const store = useWeatherAppStore();
 
     let computedStyle = reactive({
       opacity: 0.8, // 背景透明度
       transform: `scale(1)`, // 背景缩放
     });
 
+    const { appScrollTop } = storeToRefs(store);
+
     watch(
-      () => props.appScrollTop,
+      () => appScrollTop.value,
       (newVal) => {
-        let computedOpacity = 1 - newVal * 0.002;
+        let computedOpacity = 1 - newVal * 0.003;
         let computedBgScale = 1 + newVal * 0.002;
         computedStyle.opacity = computedOpacity;
         computedStyle.transform = `scale(${
           computedBgScale < 1.3 ? computedBgScale : 1.3
         })`;
+
+        store.$patch({
+          opacity: computedOpacity,
+        });
       }
     );
 
     return {
       computedStyle,
+      store,
     };
   },
 });

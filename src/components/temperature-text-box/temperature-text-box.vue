@@ -1,17 +1,21 @@
 <script lang="ts" setup>
 import { DisplayTemperature } from '..';
+import { useWeatherAppStore } from '../../store';
+const store = useWeatherAppStore();
 </script>
 
 <template>
-  <flex-box class="temperature-text-box" center-h-v direction-column>
-    <DisplayTemperature />
-    <flex-box center-h-v>
-      <span>晴</span>
-      <flex-box class="icon-wrapper" center-h-v>
-        <img class="icon" src="../../assets/edit.png" alt="" />
+  <div :style="{ opacity: store.$state.opacity }">
+    <flex-box class="temperature-text-box" center-h-v direction-column>
+      <DisplayTemperature />
+      <flex-box center-h-v>
+        <span>晴</span>
+        <flex-box class="icon-wrapper" center-h-v>
+          <img class="icon" src="../../assets/edit.png" alt="" />
+        </flex-box>
       </flex-box>
     </flex-box>
-  </flex-box>
+  </div>
 </template>
 
 <style lang="scss" scoped>

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { onMounted, ref } from "vue";
+import { onMounted, ref, computed } from 'vue';
 import {
   HeaderBar,
   DisplayTemperature,
@@ -12,19 +12,25 @@ import {
   TipBox,
   CopyrightFooter,
   WeatherBg,
-} from "../../components";
+} from '../../components';
+import { useWeatherAppStore } from '../../store';
+
+const store = useWeatherAppStore();
 
 let appScrollTop = ref(0);
 
 const appScroll = (e: any) => {
   console.log(e.target?.scrollTop);
   appScrollTop.value = e.target?.scrollTop;
+  store.$patch({
+    appScrollTop: e.target?.scrollTop,
+  });
 };
 </script>
 
 <template>
   <div class="weather-app" id="weather-app" @scroll="appScroll">
-    <WeatherBg :appScrollTop="appScrollTop" />
+    <WeatherBg />
     <HeaderBar />
     <TemperatureTextBox />
     <RecentWeatherInfo />
