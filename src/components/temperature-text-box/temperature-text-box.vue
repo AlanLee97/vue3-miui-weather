@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-  import { DisplayTemperature } from '..';
+import { DisplayTemperature } from '..';
 </script>
 
 <template>
@@ -8,7 +8,7 @@
     <flex-box center-h-v>
       <span>晴</span>
       <flex-box class="icon-wrapper" center-h-v>
-        <img class="icon" src="../../assets/edit.png" alt="">
+        <img class="icon" src="../../assets/edit.png" alt="" />
       </flex-box>
     </flex-box>
   </flex-box>
@@ -25,7 +25,7 @@
     width: 22px;
     height: 22px;
     border-radius: 50%;
-    background-color: rgba($color: #fff, $alpha: .3);
+    background-color: rgba($color: #fff, $alpha: 0.3);
     margin-left: 8px;
 
     .icon {

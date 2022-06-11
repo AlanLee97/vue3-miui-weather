@@ -1,25 +1,25 @@
 <script lang="ts" setup>
-import { reactive } from 'vue';
-import { HoursWeatherInfoItem } from '..';
+import { reactive } from "vue";
+import { HoursWeatherInfoItem } from "..";
 
 export interface HoursWeatherData {
   time: string;
   temperature: string;
   icon: string;
   windyPower: string;
-  airQuality: string
+  airQuality: string;
 }
 
 let list = reactive<Array<HoursWeatherData>>([]);
 
-for(let i = 0; i < 24; i++) {
+for (let i = 0; i < 24; i++) {
   list.push({
-    time: `${i < 10 ? '0' + i : i}:00`,
+    time: `${i < 10 ? "0" + i : i}:00`,
     temperature: "21°",
     icon: "",
     windyPower: "2级",
-    airQuality: "良"
-  })
+    airQuality: "良",
+  });
 }
 </script>
 

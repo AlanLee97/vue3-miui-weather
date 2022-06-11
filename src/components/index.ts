@@ -13,9 +13,9 @@ export {default as HoursWeatherInfoItem} from './hours-weather-info-item/hours-w
 export {default as SummaryWeatherInfo} from './summary-weather-info/summary-weather-info.vue';
 export {default as SummaryWeatherInfoItem} from './summary-weather-info-item/summary-weather-info-item.vue';
 export {default as SunInfo} from './sun-info/sun-info.vue';
-export {default as Forecast} from './forecast/forecast.vue';
+export {default as VideoForecast} from './video-forecast/video-forecast.vue';
 export {default as TipBox} from './tip-box/tip-box.vue';
 export {default as TipBoxItem} from './tip-box-item/tip-box-item.vue';
-export {default as Footer} from './footer/footer.vue';
+export {default as CopyrightFooter} from './copyright-footer/copyright-footer.vue';
 export {default as WeatherBg} from './weather-bg/weather-bg.vue';
 

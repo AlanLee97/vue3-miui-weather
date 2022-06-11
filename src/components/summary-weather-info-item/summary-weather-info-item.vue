@@ -1,11 +1,12 @@
 <script lang="ts" setup>
+import { toRefs } from 'vue';
 import { SummaryData } from '../summary-weather-info/summary-weather-info.vue';
 
 const props = defineProps<{
   data: SummaryData
 }>();
 
-const {data, desc} = props.data;
+const {data, desc} = toRefs(props.data);
 </script>
 
 <template>

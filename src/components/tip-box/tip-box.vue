@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { reactive } from '@vue/reactivity';
+import { reactive } from 'vue';
 import { TipBoxItem } from '..';
 import { TipBoxItemData } from '../tip-box-item/tip-box-item.vue';
 
@@ -16,7 +16,7 @@ let tipBoxData1: Array<TipBoxItemData> = reactive([
     icon: '',
     text: '宜户外运动',
   }
-])
+]);
 
 let tipBoxData2: Array<TipBoxItemData> = reactive([
   {
@@ -31,18 +31,18 @@ let tipBoxData2: Array<TipBoxItemData> = reactive([
     icon: '',
     text: '较易感冒',
   }
-])
+]);
 </script>
 
 <template>
   <flex-box class="tip-box" space-between style="flex-wrap: wrap;">
-    <template v-for="item in tipBoxData1" :key="item.text">
+    <div v-for="item in tipBoxData1" :key="item.text">
       <tip-box-item :data="item" class="item-wrapper" />
-    </template>
+    </div>
     <div class="divide"></div>
-    <template v-for="item in tipBoxData2" :key="item.text">
+    <div v-for="item in tipBoxData2" :key="item.text">
       <tip-box-item :data="item" class="item-wrapper" />
-    </template>
+    </div>
   </flex-box>
 </template>
 

@@ -1,34 +1,40 @@
 <script lang="ts" setup>
-import { 
-  HeaderBar, 
+import { onMounted, ref } from "vue";
+import {
+  HeaderBar,
   DisplayTemperature,
   TemperatureTextBox,
   RecentWeatherInfo,
   RecentWeatherBtn,
   HoursWeatherInfo,
   SummaryWeatherInfo,
-  Forecast,
+  VideoForecast,
   TipBox,
-  Footer,
-  WeatherBg
-} 
-from '../../components';
+  CopyrightFooter,
+  WeatherBg,
+} from "../../components";
+
+let appScrollTop = ref(0);
+
+const appScroll = (e: any) => {
+  console.log(e.target?.scrollTop);
+  appScrollTop.value = e.target?.scrollTop;
+};
 </script>
 
 <template>
-    <div class="weather-app">
-      <WeatherBg />
-      <HeaderBar />
-      <TemperatureTextBox />
-      <RecentWeatherInfo />
-      <RecentWeatherBtn />
-      <HoursWeatherInfo />
-      <SummaryWeatherInfo />
-      <Forecast />
-      <TipBox />
-      <Footer />
-      
-    </div>
+  <div class="weather-app" id="weather-app" @scroll="appScroll">
+    <WeatherBg :appScrollTop="appScrollTop" />
+    <HeaderBar />
+    <TemperatureTextBox />
+    <RecentWeatherInfo />
+    <RecentWeatherBtn />
+    <HoursWeatherInfo />
+    <SummaryWeatherInfo />
+    <VideoForecast />
+    <TipBox />
+    <CopyrightFooter />
+  </div>
 </template>
 
 <style lang="scss" scoped>
@@ -43,5 +49,4 @@ from '../../components';
   left: 0;
   overflow: scroll;
 }
-
 </style>

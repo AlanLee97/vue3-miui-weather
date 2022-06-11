@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import { toRefs } from "vue";
+
 
 export interface TipBoxItemData {
   icon: string,
@@ -11,7 +13,7 @@ const props = defineProps<{
 let {
   icon = '../../assets/clothing.png',
   text = '文本'
-} = props.data;
+} = toRefs(props.data);
 
 </script>
 

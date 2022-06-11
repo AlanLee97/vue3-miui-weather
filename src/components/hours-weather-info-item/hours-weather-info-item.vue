@@ -1,23 +1,30 @@
 <script lang="ts" setup>
-import { HoursWeatherData } from '../hours-weather-info/hours-weather-info.vue';
+import { toRefs } from "vue";
+import { HoursWeatherData } from "../hours-weather-info/hours-weather-info.vue";
 
 const props = defineProps<{
-  data: HoursWeatherData
+  data: HoursWeatherData;
 }>();
-const {time, temperature, icon, windyPower, airQuality} = props.data;
+const { time, temperature, icon, windyPower, airQuality } = toRefs(props.data);
 </script>
 
 <template>
   <div class="hours-weather-info-item">
     <flex-box direction-column class="item" center-h-v>
-      <div class="time">{{time}}</div>
-      <div class="temperature">{{temperature}}</div>
-      <img src="../../assets/icon_cloudy.webp" alt="" class="icon">
+      <div class="time">{{ time }}</div>
+      <div class="temperature">{{ temperature }}</div>
+      <img src="../../assets/icon_cloudy.webp" alt="" class="icon" />
       <flex-box class="windy-power" center-v>
-        <img src="../../assets/wind_northeast.webp" alt="" class="icon-wind-power">
-        {{windyPower}}
+        <img
+          src="../../assets/wind_northeast.webp"
+          alt=""
+          class="icon-wind-power"
+        />
+        {{ windyPower }}
       </flex-box>
-      <div class="air-quality"><span class="text">{{airQuality}}</span></div>
+      <div class="air-quality">
+        <span class="text">{{ airQuality }}</span>
+      </div>
     </flex-box>
   </div>
 </template>
@@ -31,7 +38,7 @@ const {time, temperature, icon, windyPower, airQuality} = props.data;
     padding: 20px 0;
     .time {
       font-size: 13px;
-      color: rgba($color: #fff, $alpha: .6);
+      color: rgba($color: #fff, $alpha: 0.6);
       line-height: 1.5;
     }
     .temperature {
@@ -46,7 +53,7 @@ const {time, temperature, icon, windyPower, airQuality} = props.data;
       }
     }
     .air-quality {
-      background-color: rgba($color: #fff, $alpha: .3);
+      background-color: rgba($color: #fff, $alpha: 0.3);
       padding: 0 10px;
       height: 20px;
       border-radius: 16px;
@@ -62,6 +69,5 @@ const {time, temperature, icon, windyPower, airQuality} = props.data;
     width: 20px;
     height: 20px;
   }
-
 }
 </style>

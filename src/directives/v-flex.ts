@@ -4,7 +4,7 @@ import './style.scss';
 
 const handleAliasProps = (alias: string) => {
   let className = alias;
-  switch(className) {
+  switch (className) {
     case 'wrap':
       className = 'flex-wrap';
       break;
@@ -17,21 +17,20 @@ const handleAliasProps = (alias: string) => {
       className = 'direction-column';
       break;
   }
-  if(['between', 'around', 'evenly'].includes(className)) {
-    className = `space-${className}`
+  if (['between', 'around', 'evenly'].includes(className)) {
+    className = `space-${className}`;
   }
   return className;
-}
+};
 
 export default {
   mounted(el: HTMLElement, binding: DirectiveBinding) {
     el.setAttribute('class', 'flex-box');
-    const {modifiers} = binding;
+    const { modifiers } = binding;
     let currentClass = el.getAttribute('class') ?? '';
     for (const key in modifiers) {
-      currentClass += (' ' + handleAliasProps(key));
+      currentClass += ' ' + handleAliasProps(key);
     }
     el.setAttribute('class', transformCamelToDash(currentClass));
-  }
-}
-
+  },
+};
