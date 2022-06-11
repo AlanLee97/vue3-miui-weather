@@ -17,4 +17,5 @@ export {default as Forecast} from './forecast/forecast.vue';
 export {default as TipBox} from './tip-box/tip-box.vue';
 export {default as TipBoxItem} from './tip-box-item/tip-box-item.vue';
 export {default as Footer} from './footer/footer.vue';
+export {default as WeatherBg} from './weather-bg/weather-bg.vue';
 

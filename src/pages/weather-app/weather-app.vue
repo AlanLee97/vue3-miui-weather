@@ -9,13 +9,15 @@ import {
   SummaryWeatherInfo,
   Forecast,
   TipBox,
-  Footer
+  Footer,
+  WeatherBg
 } 
 from '../../components';
 </script>
 
 <template>
     <div class="weather-app">
+      <WeatherBg />
       <HeaderBar />
       <TemperatureTextBox />
       <RecentWeatherInfo />
