@@ -31,7 +31,7 @@ export default defineComponent({
     watch(
       () => appScrollTop.value,
       (newVal) => {
-        let computedOpacity = 1 - newVal * 0.003;
+        let computedOpacity = 1 - newVal * 0.004;
         let computedBgScale = 1 + newVal * 0.002;
         computedStyle.opacity = computedOpacity;
         computedStyle.transform = `scale(${

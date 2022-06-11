@@ -2,16 +2,7 @@
 import { onMounted, ref, computed } from 'vue';
 import {
   HeaderBar,
-  DisplayTemperature,
-  TemperatureTextBox,
-  RecentWeatherInfo,
-  RecentWeatherBtn,
-  HoursWeatherInfo,
-  SummaryWeatherInfo,
-  VideoForecast,
-  TipBox,
-  CopyrightFooter,
-  WeatherBg,
+  CityFragment
 } from '../../components';
 import { useWeatherAppStore } from '../../store';
 
@@ -26,20 +17,50 @@ const appScroll = (e: any) => {
     appScrollTop: e.target?.scrollTop,
   });
 };
+
+let currentCityIndex = ref(0);
+
+let startScreenX = 0;
+const onTouchStart = (e: any) => {
+  console.log('onTouchStart', e.changedTouches[0]);
+  startScreenX = e.changedTouches[0].screenX;
+};
+let moveDistance = 0;
+const onTouchMove = (e: any) => {
+  moveDistance = e.changedTouches[0].screenX - startScreenX;
+  console.log('onTouchMove moveDistance', moveDistance);
+  store.$patch({
+    rotateDeg: moveDistance < 45 ? (moveDistance > -45 ? moveDistance : -45) : 45,
+  });
+
+};
+const onTouchEnd = (e: any) => {
+  console.log('onTouchEnd', e.changedTouches[0]);
+  store.$patch({
+    rotateDeg: 0,
+  });
+  if (moveDistance < -150) {
+    currentCityIndex.value = currentCityIndex.value + 1;
+    if (currentCityIndex.value >= store.$state.cityList.length) {
+      currentCityIndex.value = store.$state.cityList.length;
+    }
+  }
+  if (moveDistance > 150) {
+    currentCityIndex.value = currentCityIndex.value - 1;
+    if (currentCityIndex.value <= 0) {
+      currentCityIndex.value = 0;
+    }
+  }
+};
+
 </script>
 
 <template>
-  <div class="weather-app" id="weather-app" @scroll="appScroll">
-    <WeatherBg />
-    <HeaderBar />
-    <TemperatureTextBox />
-    <RecentWeatherInfo />
-    <RecentWeatherBtn />
-    <HoursWeatherInfo />
-    <SummaryWeatherInfo />
-    <VideoForecast />
-    <TipBox />
-    <CopyrightFooter />
+  <div class="weather-app" id="weather-app" @scroll="appScroll" @touchstart="onTouchStart" @touchmove="onTouchMove"
+    @touchend="onTouchEnd">
+    <HeaderBar :city="store.$state.cityList[currentCityIndex]" />
+
+    <CityFragment />
   </div>
 </template>
 

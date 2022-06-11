@@ -54,11 +54,11 @@ let tipBoxData2: Array<TipBoxItemData> = reactive([
   border-radius: 20px;
 
   .item-wrapper {
-    width: 28%;
+    // width: 28%;
   }
 
   .divide {
-    width: 100%; 
+    width: 100%;
     height: 30px;
   }
 }
