@@ -1,3 +1,4 @@
+import { Swipe, SwipeItem } from 'vant';
 import { createApp } from 'vue';
 import App from './App.vue';
 import { FlexBox } from './components';
@@ -12,3 +13,5 @@ app.component('flex-box', FlexBox);
 app.directive('flex', vFlex);
 // app.component('a-flex-box', AFlexBox);
 app.mount('#app');
+app.use(Swipe);
+app.use(SwipeItem);

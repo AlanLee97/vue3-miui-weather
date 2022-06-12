@@ -2,9 +2,11 @@
 import { onMounted, ref, computed } from 'vue';
 import {
   HeaderBar,
-  CityFragment
+  CityFragment,
+  TemperatureTextBox
 } from '../../components';
 import { useWeatherAppStore } from '../../store';
+import type { SwipeInstance } from 'vant';
 
 const store = useWeatherAppStore();
 
@@ -19,16 +21,20 @@ const appScroll = (e: any) => {
 };
 
 let currentCityIndex = ref(0);
+const swiperRef = ref<SwipeInstance>();
+let shouldChangeSwipe = true;
 
 let startScreenX = 0;
 const onTouchStart = (e: any) => {
   console.log('onTouchStart', e.changedTouches[0]);
   startScreenX = e.changedTouches[0].screenX;
+  shouldChangeSwipe = true;
+
 };
 let moveDistance = 0;
 const onTouchMove = (e: any) => {
   moveDistance = e.changedTouches[0].screenX - startScreenX;
-  console.log('onTouchMove moveDistance', moveDistance);
+  // console.log('onTouchMove moveDistance', moveDistance);
   store.$patch({
     rotateDeg: moveDistance < 45 ? (moveDistance > -45 ? moveDistance : -45) : 45,
   });
@@ -39,18 +45,35 @@ const onTouchEnd = (e: any) => {
   store.$patch({
     rotateDeg: 0,
   });
-  if (moveDistance < -150) {
+  let threshold = 60;
+  if (moveDistance < -threshold) {
     currentCityIndex.value = currentCityIndex.value + 1;
-    if (currentCityIndex.value >= store.$state.cityList.length) {
-      currentCityIndex.value = store.$state.cityList.length;
+    if (currentCityIndex.value >= store.$state.cityList.length - 1) {
+      currentCityIndex.value = store.$state.cityList.length - 1;
     }
   }
-  if (moveDistance > 150) {
+  if (moveDistance > threshold) {
     currentCityIndex.value = currentCityIndex.value - 1;
     if (currentCityIndex.value <= 0) {
       currentCityIndex.value = 0;
     }
   }
+  store.$patch({
+    currentCityIndex: currentCityIndex.value
+  });
+  store.updateCurrentWeatherInfo();
+  if (shouldChangeSwipe) {
+    (swiperRef.value as SwipeInstance).swipeTo(currentCityIndex.value);
+    shouldChangeSwipe = true;
+  }
+};
+
+const onSwiperChange = (index: any) => {
+  shouldChangeSwipe = false;
+  console.log('onSwiperChange', index);
+  store.$patch({
+    currentCityIndex: index
+  });
 };
 
 </script>
@@ -58,9 +81,25 @@ const onTouchEnd = (e: any) => {
 <template>
   <div class="weather-app" id="weather-app" @scroll="appScroll" @touchstart="onTouchStart" @touchmove="onTouchMove"
     @touchend="onTouchEnd">
-    <HeaderBar :city="store.$state.cityList[currentCityIndex]" />
+    <HeaderBar :city="store.$state.cityList[store.$state.currentCityIndex]" />
+    <WeatherBg />
 
-    <CityFragment />
+    <TemperatureTextBox />
+    <van-swipe ref="swiperRef" class="my-swipe" @change="onSwiperChange" :stop-propagation="false" :loop="false">
+      <van-swipe-item>
+        <CityFragment />
+      </van-swipe-item>
+      <van-swipe-item>
+        <CityFragment />
+      </van-swipe-item>
+      <van-swipe-item>
+        <CityFragment />
+      </van-swipe-item>
+      <van-swipe-item>
+        <CityFragment />
+      </van-swipe-item>
+    </van-swipe>
+
   </div>
 </template>
 
@@ -75,5 +114,9 @@ const onTouchEnd = (e: any) => {
   top: 0;
   left: 0;
   overflow: scroll;
+}
+
+.my-swipe {
+  width: 100vw;
 }
 </style>

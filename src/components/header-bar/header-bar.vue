@@ -4,7 +4,7 @@ import { useWeatherAppStore } from '../../store';
 const store = useWeatherAppStore();
 
 interface CityData {
-  name: string;
+  city: string;
   distrist: string;
 }
 
@@ -35,8 +35,8 @@ const { city } = toRefs(props);
 
       <flex-box class="center" center-h-v>
         <img src="../../assets/navigate.png" class="navigate-icon" />
-        <div v-for="item in store.$state.cityList" :key="item.name"
-          :class="['dot', `${item.name === city.name ? 'active-dot' : ''}`]"></div>
+        <div v-for="item in store.$state.cityList" :key="item.city"
+          :class="['dot', `${item.city === city.city ? 'active-dot' : ''}`]"></div>
       </flex-box>
     </div>
   </div>
@@ -45,6 +45,7 @@ const { city } = toRefs(props);
 <style lang="scss" scoped>
 .header-bar {
   padding: 20px;
+  padding-bottom: 0;
   position: fixed;
   top: 0;
   left: 0;
@@ -57,7 +58,7 @@ const { city } = toRefs(props);
     top: 0;
     left: 0;
     width: 100%;
-    height: 124px;
+    height: 104px;
     background-image: linear-gradient(to top, #00c6fb 0%, #005bea 100%);
     background-size: 100% 100vh;
     z-index: -1;

@@ -16,8 +16,7 @@ import {
 
 <template>
   <div class="city-fragment">
-    <WeatherBg />
-    <TemperatureTextBox />
+
     <RecentWeatherInfo />
     <RecentWeatherBtn />
     <HoursWeatherInfo />

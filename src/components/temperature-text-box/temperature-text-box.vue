@@ -9,7 +9,7 @@ const store = useWeatherAppStore();
     <flex-box class="temperature-text-box" center-h-v direction-column>
       <DisplayTemperature />
       <flex-box center-h-v>
-        <span>晴</span>
+        <span>{{ store.$state.currentWeatherInfo.weatherText }}</span>
         <flex-box class="icon-wrapper" center-h-v>
           <img class="icon" src="../../assets/edit.png" alt="" />
         </flex-box>

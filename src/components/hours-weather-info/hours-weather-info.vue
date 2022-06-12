@@ -21,12 +21,18 @@ for (let i = 0; i < 24; i++) {
     airQuality: "良",
   });
 }
+
+const onTouchMove = (e: any) => {
+  e.stopPropagation();
+};
 </script>
 
 <template>
-  <flex-box class="hours-weather-info">
-    <HoursWeatherInfoItem v-for="item in list" :key="item.time" :data="item" />
-  </flex-box>
+  <div @touchmove="onTouchMove">
+    <flex-box class="hours-weather-info">
+      <HoursWeatherInfoItem v-for="item in list" :key="item.time" :data="item" />
+    </flex-box>
+  </div>
 </template>
 
 <style lang="scss" scoped>
