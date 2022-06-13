@@ -34,6 +34,8 @@ let rotateDeg = computed(() => {
     font-family: Helvetica;
     position: relative;
     transition: transform 200ms;
+    width: fit-content;
+    height: fit-content;
   }
 
   .temperature-unit {
