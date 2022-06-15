@@ -5,6 +5,8 @@ import {
   CityFragment,
   TemperatureTextBox
 } from '../../components';
+import CityManage from '../city-manage/city-manage.vue';
+
 import { useWeatherAppStore } from '../../store';
 import type { SwipeInstance } from 'vant';
 
@@ -76,29 +78,45 @@ const onSwiperChange = (index: any) => {
   });
 };
 
+const onAddCity = (val: any) => {
+  console.log('城市管理');
+  showCityManagePage.value = true;
+};
+
+const hideCityManagePage = () => {
+  showCityManagePage.value = false;
+};
+
+const showCityManagePage = ref(false);
+
 </script>
 
 <template>
-  <div class="weather-app" id="weather-app" @scroll="appScroll" @touchstart="onTouchStart" @touchmove="onTouchMove"
+  <div >
+    <CityManage v-if="showCityManagePage" @close="hideCityManagePage" />
+    <div v-else class="weather-app" id="weather-app" @scroll="appScroll" @touchstart="onTouchStart" @touchmove="onTouchMove"
     @touchend="onTouchEnd">
-    <HeaderBar :city="store.$state.cityList[store.$state.currentCityIndex]" />
-    <WeatherBg />
+      <HeaderBar :city="store.$state.cityList[store.$state.currentCityIndex]" @addCity="onAddCity" />
+      
+      <WeatherBg />
 
-    <TemperatureTextBox />
-    <van-swipe ref="swiperRef" class="my-swipe" @change="onSwiperChange" :stop-propagation="false" :loop="false">
-      <van-swipe-item>
-        <CityFragment />
-      </van-swipe-item>
-      <van-swipe-item>
-        <CityFragment />
-      </van-swipe-item>
-      <van-swipe-item>
-        <CityFragment />
-      </van-swipe-item>
-      <van-swipe-item>
-        <CityFragment />
-      </van-swipe-item>
-    </van-swipe>
+      <TemperatureTextBox />
+      <van-swipe ref="swiperRef" class="my-swipe" @change="onSwiperChange" :stop-propagation="false" :loop="false">
+        <van-swipe-item>
+          <CityFragment />
+        </van-swipe-item>
+        <van-swipe-item>
+          <CityFragment />
+        </van-swipe-item>
+        <van-swipe-item>
+          <CityFragment />
+        </van-swipe-item>
+        <van-swipe-item>
+          <CityFragment />
+        </van-swipe-item>
+      </van-swipe>
+    </div>
+
 
   </div>
 </template>

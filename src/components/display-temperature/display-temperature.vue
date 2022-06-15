@@ -33,7 +33,7 @@ let rotateDeg = computed(() => {
     font-size: 130px;
     font-family: Helvetica;
     position: relative;
-    transition: transform 200ms;
+    transition: transform 1000ms;
     width: fit-content;
     height: fit-content;
   }

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { toRefs } from 'vue-demi';
+import { toRefs, defineEmits } from 'vue';
 import { useWeatherAppStore } from '../../store';
 const store = useWeatherAppStore();
 
@@ -14,6 +14,13 @@ const props = defineProps<{
 
 const { city } = toRefs(props);
 
+const emit = defineEmits<{
+  (event: 'addCity'): void
+}>();
+const handleClickAdd = () => {
+  emit('addCity');
+};
+
 </script>
 
 <template>
@@ -22,7 +29,7 @@ const { city } = toRefs(props);
     <div>
       <div style="height: 40px"></div>
       <flex-box space-between center-v>
-        <flex-box class="left" center-h-v>
+        <flex-box class="left" center-h-v @click="handleClickAdd">
           <img class="icon" src="../../assets/add.png" />
         </flex-box>
         <flex-box class="center" center-h-v>
