@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { toRefs, defineEmits } from 'vue';
+import { toRefs, defineEmits, computed } from 'vue';
 import { useWeatherAppStore } from '../../store';
 const store = useWeatherAppStore();
 
@@ -21,11 +21,13 @@ const handleClickAdd = () => {
   emit('addCity');
 };
 
+
+
 </script>
 
 <template>
   <div class="header-bar">
-    <div class="header-bar-bg" :style="{ opacity: 1 - store.$state.opacity - 0.3 }"></div>
+    <div :class="`header-bar-bg bg-${store.$state.currentWeatherBg}`" :style="{ opacity: 1 - store.$state.opacity2 - 0.3 }"></div>
     <div>
       <div style="height: 40px"></div>
       <flex-box space-between center-v>
@@ -66,7 +68,7 @@ const handleClickAdd = () => {
     left: 0;
     width: 100%;
     height: 104px;
-    background-image: linear-gradient(to top, #00c6fb 0%, #005bea 100%);
+    // background-image: linear-gradient(to top, #00c6fb 0%, #005bea 100%);
     background-size: 100% 100vh;
     z-index: -1;
   }

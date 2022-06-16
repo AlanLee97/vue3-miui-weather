@@ -126,7 +126,6 @@ const showCityManagePage = ref(false);
   width: 100vw;
   height: 100vh;
   line-height: 2;
-  background-image: linear-gradient(to top, #00c6fb 0%, #005bea 100%);
   color: #fff;
   position: fixed;
   top: 0;

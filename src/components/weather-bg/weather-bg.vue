@@ -1,6 +1,6 @@
 <template>
-  <div class="weather-bg scale-bg" id="weather-bg" :style="computedStyle">
-    <img class="cloud" src="./yun2.webp" />
+  <div :class="`bg-${store.$state.currentWeatherBg} weather-bg`">
+    <img id="cloud" class="cloud scale-bg" :style="computedStyle" src="./yun2.webp" />
   </div>
 </template>
 
@@ -22,13 +22,15 @@ export default defineComponent({
     const store = useWeatherAppStore();
 
     let computedStyle = reactive({
-      opacity: 0.8, // 背景透明度
+      opacity: store.$state.currentWeatherBg === 'rainy' ? 0.3 : 0.8, // 背景透明度
       transform: `scale(1)`, // 背景缩放
     });
 
     const { appScrollTop, currentCityIndex } = storeToRefs(store);
     watch(() => currentCityIndex.value, (newVal) => {
-      let el = document.getElementById('weather-bg');
+      console.log('切换城市，改变背景动画效果');
+      
+      let el = document.getElementById('cloud');
       let className = el?.className || '';
       let hasScaleClass = className.includes('scale-bg') || className.includes('scaleBgReverse');
       if (hasScaleClass) {
@@ -49,7 +51,9 @@ export default defineComponent({
     watch(
       () => appScrollTop.value,
       (newVal) => {
-        let computedOpacity = 1 - newVal * 0.004;
+        let rainy = store.$state.currentWeatherBg === 'rainy';
+        let computedOpacity = rainy ? 0.3 - newVal * 0.001 : 1 - newVal * 0.004;
+        let computedOpacity2 = 1 - newVal * 0.004;
         let computedBgScale = 1 + newVal * 0.002;
         computedStyle.opacity = computedOpacity;
         computedStyle.transform = `scale(${computedBgScale < 1.3 ? computedBgScale : 1.3
@@ -57,6 +61,7 @@ export default defineComponent({
 
         store.$patch({
           opacity: computedOpacity,
+          opacity2: computedOpacity2,
         });
       }
     );
@@ -74,14 +79,14 @@ export default defineComponent({
   position: fixed;
   top: 0;
   left: 0;
+  width: 100vw;
+  height: 100vh;
   transition: transform 600ms; // 动画过渡
-  // animation: scaleBg 1s 1;
 
   .cloud {
     animation: cloudMove 100s infinite;
     opacity: 0.8;
   }
-
 }
 
 .scale-bg {
@@ -132,5 +137,19 @@ export default defineComponent({
   100% {
     transform: scale(1);
   }
+}
+</style>
+
+<style lang="scss">
+.bg-sunny {
+  background-image: linear-gradient(to top, #00c6fb 0%, #005bea 100%);
+}
+
+.bg-cloudy {
+  background-image: linear-gradient(to top, #e2ebf0 0%, #cfd9df 100%);
+}
+
+.bg-rainy {
+  background-image: linear-gradient(to right, #596164 0%, #868f96 100%);
 }
 </style>

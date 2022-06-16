@@ -5,11 +5,11 @@ const store = useWeatherAppStore();
 </script>
 
 <template>
-  <div :style="{ opacity: store.$state.opacity }">
+  <div :style="{ opacity: store.$state.opacity2 }">
     <flex-box class="temperature-text-box" center-h-v direction-column>
       <DisplayTemperature />
       <flex-box center-h-v>
-        <span>{{ store.$state.currentWeatherInfo.weatherText }}</span>
+        <span class="weather-text">{{ store.$state.currentWeatherInfo.weatherText }}</span>
         <flex-box class="icon-wrapper" center-h-v>
           <img class="icon" src="../../assets/edit.png" alt="" />
         </flex-box>
@@ -31,11 +31,16 @@ const store = useWeatherAppStore();
     border-radius: 50%;
     background-color: rgba($color: #fff, $alpha: 0.3);
     margin-left: 8px;
+    z-index: 1;
 
     .icon {
       width: 10px;
       height: 10px;
     }
+  }
+
+  .weather-text {
+    z-index: 1;
   }
 }
 </style>

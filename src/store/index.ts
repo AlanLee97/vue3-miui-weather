@@ -19,8 +19,10 @@ export const useWeatherAppStore = defineStore('weatherApp', {
     return {
       appScrollTop: 0,
       opacity: 0.8,
+      opacity2: 0.8,
       rotateDeg: 0,
       currentCityIndex: 0,
+      currentWeatherBg: 'sunny',
       cityList: [
         {
           city: '深圳',
@@ -470,9 +472,29 @@ export const useWeatherAppStore = defineStore('weatherApp', {
       },
     };
   },
+  getters: {
+
+  },
   actions: {
     updateCurrentWeatherInfo() {
       this.currentWeatherInfo = this.cityList[this.currentCityIndex];
+      this.updateCurrentWeatherBg();
+    },
+    updateCurrentWeatherBg() {
+      let text = this.cityList[this.currentCityIndex].weatherText;
+      let val = 'sunny';
+      switch (text) {
+        case '晴':
+          val = 'sunny';
+          break;
+        case '多云':
+          val = 'cloudy';
+          break;
+        case '大雨':
+          val = 'rainy';
+          break;
+      }
+      this.currentWeatherBg = val;
     },
   },
 });
