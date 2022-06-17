@@ -1,8 +1,10 @@
 <template>
   <div :class="`bg-${store.$state.currentWeatherBg} weather-bg`">
 
-    <div id="cloud-wrapper" class="scale-bg">
-      <img id="cloud" class="cloud" :style="computedStyle" src="./yun2.webp" />
+    <div id="cloud-wrapper" class="scale-bg" ref="scaleBg">
+      <div :style="computedStyle">
+        <img id="cloud" class="cloud" src="./yun2.webp" />
+      </div>
     </div>
   </div>
 </template>
@@ -31,8 +33,7 @@ export default defineComponent({
 
     const { appScrollTop, currentCityIndex } = storeToRefs(store);
     watch(() => currentCityIndex.value, (newVal) => {
-      console.log('切换城市，改变背景动画效果');
-      
+      // 处理云朵放大缩小效果
       let el = document.getElementById('cloud-wrapper');
       let className = el?.className || '';
       let hasScaleClass = className.includes('scale-bg') || className.includes('scaleBgReverse');
@@ -41,11 +42,25 @@ export default defineComponent({
         className = className.replace('scaleBgReverse', '').trim();
         el?.setAttribute('class', className);
       }
-
       let newClassName = 'scale-bg';
       if (newVal % 2 === 0) {
         newClassName = 'scaleBgReverse';
       }
+      setTimeout(() => {
+        el?.setAttribute('class', className + ' ' + newClassName);
+      }, 10);
+
+      // 处理温度文字效果
+      el = document.getElementById('temperature-num');
+      className = el?.className || '';
+      let hasRotateClass = className.includes('rotate-el');
+      if (hasRotateClass) {
+        className = className.replace('rotate-el', '').trim();
+        el?.setAttribute('class', className);
+      }
+
+      newClassName = 'rotate-el';
+
       setTimeout(() => {
         el?.setAttribute('class', className + ' ' + newClassName);
       }, 10);
@@ -89,6 +104,10 @@ export default defineComponent({
   .cloud {
     animation: cloudMove 100s infinite;
     opacity: 0.8;
+  }
+
+  #cloud-wrapper {
+    animation: rotateBg 2s;
   }
 }
 
@@ -141,6 +160,8 @@ export default defineComponent({
     transform: scale(1);
   }
 }
+
+
 </style>
 
 <style lang="scss">

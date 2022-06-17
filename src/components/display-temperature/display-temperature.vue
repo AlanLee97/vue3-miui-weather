@@ -17,7 +17,7 @@ let rotateDeg = computed(() => {
 
 <template>
   <flex-box class="display-temperature" center-h item-align-start>
-    <span class="temperature-num" :style="{ transform: `rotateY(${rotateDeg}deg)` }">
+    <span id="temperature-num" class="temperature-num" :style="{ transform: `rotateY(${rotateDeg}deg)` }">
       {{ store.$state.currentWeatherInfo.temperature }}
       <span class="temperature-unit">℃</span>
     </span>
@@ -38,6 +38,12 @@ let rotateDeg = computed(() => {
     height: fit-content;
   }
 
+  .rotate-el {
+    animation: rotateEl;
+    animation-timing-function: cubic-bezier(0, 1, 0, 1);
+    animation-duration: 1500ms;
+  }
+
   .temperature-unit {
     font-size: 24px;
     margin-top: 16px;
@@ -46,6 +52,14 @@ let rotateDeg = computed(() => {
     font-family: Helvetica;
     position: absolute;
   }
-
+  // 旋转元素
+  @keyframes rotateEl {
+    0% {
+      transform: rotateY(0deg) scale(0%);
+    }
+    100% {
+      transform: rotateY(360deg) scale(100%);
+    }
+  }
 }
 </style>
