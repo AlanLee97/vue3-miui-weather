@@ -1,6 +1,9 @@
 <template>
   <div :class="`bg-${store.$state.currentWeatherBg} weather-bg`">
-    <img id="cloud" class="cloud scale-bg" :style="computedStyle" src="./yun2.webp" />
+
+    <div id="cloud-wrapper" class="scale-bg">
+      <img id="cloud" class="cloud" :style="computedStyle" src="./yun2.webp" />
+    </div>
   </div>
 </template>
 
@@ -30,7 +33,7 @@ export default defineComponent({
     watch(() => currentCityIndex.value, (newVal) => {
       console.log('切换城市，改变背景动画效果');
       
-      let el = document.getElementById('cloud');
+      let el = document.getElementById('cloud-wrapper');
       let className = el?.className || '';
       let hasScaleClass = className.includes('scale-bg') || className.includes('scaleBgReverse');
       if (hasScaleClass) {
